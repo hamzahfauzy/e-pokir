@@ -172,12 +172,3 @@ input.form-control.z-input {
     transition: opacity 1s linear 0s;
 }
 
-/* Fading animation */
-.fade {
-  animation: fade 5s;
-}
-
-@keyframes fade {
-  from {opacity: 0} 
-  to {opacity: 1}
-}
