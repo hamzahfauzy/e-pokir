@@ -430,7 +430,7 @@
 				    <!-- Modal body -->
 				    <div class="modal-body">
 				    	<div style="max-height:450px;overflow-x: auto;" class="container">
-				    		<div class="upload-btn-wrapper" style="width: 100%">
+				    		<div class="upload-btn-wrapper" style="width: 100%;height: auto;">
 				    			<button class="btn btn-primary btn-block btn-upload"><i class="fa fa-cloud-upload"></i> Upload Berkas</button>
 				    			<input type="file" multiple="" @change="initFile" accept='image/*'/>
 				    		</div>
@@ -893,6 +893,7 @@ export default {
 			let data = await response.json()
 			this.usulan = data
 			this.kamusUsulan = this.kamusUsulans.find(o => o.kode_kamus === data.Kd_Kamus_Usulan)
+			this.loadRpjmd()
 			return data
 		},
 		async loadAcara()
@@ -912,7 +913,8 @@ export default {
 		},
 		async loadRpjmd()
 		{
-			await fetch(window.config.getApiUrl()+'api/rpjmd-by-pembangunan&id='+this.usulan.kd_pem)
+			var kd_pem = this.usulan.kd_pem ? this.usulan.kd_pem : this.usulan.Kd_Pem
+			await fetch(window.config.getApiUrl()+'api/rpjmd-by-pembangunan&id='+kd_pem)
 			.then(res=>res.json())
 			.then(res => {
 				this.rpjmd = res
