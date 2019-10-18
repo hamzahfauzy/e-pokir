@@ -430,9 +430,9 @@
 				    <!-- Modal body -->
 				    <div class="modal-body">
 				    	<div style="max-height:450px;overflow-x: auto;" class="container">
-				    		<div class="upload-btn-wrapper" style="width: 100%;height: auto;">
-				    			<button class="btn btn-primary btn-block btn-upload"><i class="fa fa-cloud-upload"></i> Upload Berkas</button>
-				    			<input type="file" multiple="" @change="initFile" accept='image/*'/>
+				    		<div class="upload-btn-wrapper" style="width: 100%;height: auto;" v-if="acara.status==1">
+				    			<button class="btn btn-primary btn-block btn-upload" @click="openDokumenUpload()"><i class="fa fa-cloud-upload"></i> Upload Berkas</button>
+				    			<input type="file" multiple="" @change="initFile" accept='image/*' name="dokumen_file" />
 				    		</div>
 
 					    	<div class="row" id="lcl_elems_wrapper">
@@ -443,7 +443,7 @@
 				    				<i><center>Tidak ada berkas</center></i>
 					    		</div>
 					    		<div class="col-sm-12 col-md-4" v-for="berkas in berkasUsulans">
-					    			<div class="image-float-action-button">
+					    			<div class="image-float-action-button" v-if="acara.status==1">
 					    				<button class="btn btn-danger" @click="deleteMedia(berkas.Kd_Media)"><i class="fa fa-trash"></i></button>
 					    			</div>
 					    			<a :href="mediaUrl+'/'+berkas.Nm_Media" :title="berkas.Judul_Media" :data-lcl-txt="berkas.Judul_Media" :data-lcl-author="user.username">
@@ -659,6 +659,9 @@ export default {
 	    },
 	    openFileUpload(){
 	    	document.querySelector('input[name=file_dokumen]').click()
+	    },
+	    openDokumenUpload(){
+	    	document.querySelector('input[name=dokumen_file]').click()
 	    },
 	    async sendUsulan(){
 	    	let response = await fetch(window.config.getApiUrl()+'api/simpan-usulan-reses',{
