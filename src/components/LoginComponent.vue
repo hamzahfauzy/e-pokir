@@ -86,7 +86,10 @@ export default {
 				if(res.status == 'valid')
 					location='index.html'
 				else
+				{
+					window.localStorage.removeItem('eplanning_pokir_token')
 					this.loader = true
+				}
 			})
 		},
 		doLogin(event){

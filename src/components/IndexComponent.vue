@@ -591,7 +591,10 @@ export default {
 
 			let data = await response.json()
 			if(data.status == 'error')
+			{
+				window.localStorage.removeItem('eplanning_pokir_token')
 				location='login.html'
+			}
 			else
 			{
 				this.user = await data.data
