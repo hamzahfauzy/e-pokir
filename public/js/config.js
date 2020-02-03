@@ -1,4 +1,4 @@
-var config = {
+var config = { 
 	getApiUrl: () => {
 		return 'http://eplanning.asahankab.go.id/app-2020/eperencanaan/web/index.php?r=';
 	},
