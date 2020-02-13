@@ -550,9 +550,7 @@ export default {
 					Nm_Komisi:''
 				}
 			},
-			usulan 			:{
-				jumlah:1
-			},
+			usulan 			:{},
 			token 			:'',
 			env 			:'',
 			uploadingMessage:'',
@@ -647,6 +645,7 @@ export default {
 		},
 		setUsulan(kamus){
 			this.usulan = {}
+			this.usulan.jumlah = 1
 			this.kamusUsulan = kamus
 		},
 		isNumber: function(evt) {
