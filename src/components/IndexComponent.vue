@@ -550,7 +550,9 @@ export default {
 					Nm_Komisi:''
 				}
 			},
-			usulan 			:{},
+			usulan 			:{
+				jumlah:1
+			},
 			token 			:'',
 			env 			:'',
 			uploadingMessage:'',
